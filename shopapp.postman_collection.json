@@ -1,0 +1,405 @@
+{
+    "info": {
+        "_postman_id": "af95fa24-2337-46c4-a278-0b98e9e7e3ad",
+        "name": "shopapp",
+        "description": "### Welcome to Postman! ...",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "49716620",
+        "_collection_link": "https://luanvg26122004-1448643.postman.co/workspace/Lu%C3%A2n-Nguy%E1%BB%85n's-Workspace~c4c74a2b-09fc-40ed-8ba8-58c5c8353f31/collection/49716620-af95fa24-2337-46c4-a278-0b98e9e7e3ad?action=share&source=collection_link&creator=49716620"
+    },
+    "item": [
+        {
+            "name": "products",
+            "item": [
+                {
+                    "name": "api/products",
+                    "request": {
+                        "method": "GET",
+                        "header": []
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/products",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/products",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "products"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/products",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/products",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "products"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/products",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/products/3",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "products", "3"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/products/:id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/products/3",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "products", "3"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "categories",
+            "item": [
+                {
+                    "name": "api/categories",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/categories",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "categories"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/categories/:id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/categories/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "categories", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/categories",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/categories",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "categories"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/categories/:id",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/categories/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "categories", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/categories/:id",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/categories/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "categories", "1"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "brands",
+            "item": [
+                {
+                    "name": "api/brands",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/brands",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "brands"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/brands/:id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/brands/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "brands", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/brands",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/brands",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "brands"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/brands/:id",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/brands/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "brands", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/brands/:id",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/brands/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "brands", "1"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "orders",
+            "item": [
+                {
+                    "name": "api/orders",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orders",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orders"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orders/:id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orders/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orders", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orders",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orders",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orders"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orders/:id",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orders/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orders", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orders/:id",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orders/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orders", "1"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "orderDetails",
+            "item": [
+                {
+                    "name": "api/orderDetails",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orderDetails",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orderDetails"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orderDetails/:id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orderDetails/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orderDetails", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orderDetails",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orderDetails",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orderDetails"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orderDetails/:id",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orderDetails/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orderDetails", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api/orderDetails/:id",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/api/orderDetails/1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "orderDetails", "1"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
