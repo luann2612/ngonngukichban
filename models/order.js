@@ -16,13 +16,17 @@ module.exports = (sequelize, DataTypes) => {
       })
       Order.hasMany(models.OrderDetail,{
         foreignKey: 'order_id',
+        as: 'order_details'
       })
     }
   }
   Order.init({
-    used_id: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER,
+    session_id: DataTypes.STRING,
     status: DataTypes.INTEGER,
     note: DataTypes.TEXT,
+    phone: DataTypes.TEXT,
+    address: DataTypes.TEXT,
     total: DataTypes.INTEGER
   }, {
     sequelize,

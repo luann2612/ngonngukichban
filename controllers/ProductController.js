@@ -40,7 +40,12 @@ export async function getProducts(req, res) {
 }
 export async function getProductById(req, res) {
     const {id} = req.params
-    const product = await db.Product.findByPk(id)
+    const product = await db.Product.findByPk(id, {
+        include: [{
+            model: db.ProductImage,
+            as: 'product_images'
+        }]
+    })
 
     if(!product) {
         return res.status(404).json({
@@ -57,11 +62,16 @@ export async function getProductById(req, res) {
 export async function insertProduct(req, res) {
     
     const product = await db.Product.create(req.body)
-    return res.status(501).json({
-            message: "Thêm sản phẩm thành công",
-            data: product
-        });
-
+    if(product) {
+        return res.status(200).json({
+        message: 'Thêm sản phẩm thành công',
+        data: product
+        })
+    } else {
+        return res.status(500).json({
+        message: 'Thêm sản phẩm thất bại'
+        })
+    }   
 }
 export async function deleteProduct(req, res) {
     const {id} = req.params
@@ -82,6 +92,18 @@ export async function deleteProduct(req, res) {
 }
 export async function updateProduct(req, res) {
     const { id } = req.params;
+    const {name} = req.body;
+    if (name !== undefined) {
+        const existingProduct = await db.Product.findOne(
+            {
+                where: { name: name.trim(), id: { [Op.ne]: id } }
+            });
+        if (existingProduct) {
+            return res.status(400).json({
+                message: 'Sản phẩm với tên này đã tồn tại'
+            });
+        }
+    }
     const updatedProduct = await db.Product.update(req.body, {
         where: { id }
     });

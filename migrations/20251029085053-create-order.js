@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      used_id: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -20,7 +20,16 @@ module.exports = {
       status: {
         type: Sequelize.INTEGER
       },
+      session_id: {
+        type: Sequelize.TEXT
+      },
       note: {
+        type: Sequelize.TEXT
+      },
+      address: {
+        type: Sequelize.TEXT
+      },
+      phone: {
         type: Sequelize.TEXT
       },
       total: {
