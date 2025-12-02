@@ -29,6 +29,13 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
+      is_locked: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
+      password_change_at: {
+        type: Sequelize.DATE
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

@@ -6,6 +6,8 @@ class InsertOrderRequest {
     this.status = data.status;
     this.note = data.note;
     this.total = data.total;
+    this.phone = data.phone;
+    this.address = data.address;
   }
 
   static validate(data) {
@@ -13,6 +15,8 @@ class InsertOrderRequest {
       user_id: Joi.number().integer().required(),
       status: Joi.number().integer().greater(0).required(), 
       note: Joi.string().optional().allow(null, ""), 
+      phone: Joi.string().pattern(/^[0-9]+$/).optional().required(),
+      address: Joi.string().optional().allow(null, ""),
       total: Joi.number().integer().min(0).required(),
     });
 

@@ -3,6 +3,7 @@ import db from "../models"
 import InsertProductRequest from "../dtos/requests/product/InsertProductRequest"
 import UpdateProductRequest from "../dtos/requests/product/UpdateProductRequest"
 const{Op} = Sequelize
+import { getAvatarUrl } from "../helpers/imageHelper.js";
 export async function getProducts(req, res) {
     // const products = await db.Product.findAll()
     //search and paging

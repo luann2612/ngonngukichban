@@ -7,6 +7,8 @@ import argon2 from "argon2";
 import UserRole from "../constants/UserRole.js";
 import jwt from "jsonwebtoken";
 require('dotenv').config();
+import os from "os";
+import { getAvatarUrl } from "../helpers/imageHelper.js";
 
 export async function registerUser(req, res) {
     const {email, phone, password} = req.body;
@@ -81,6 +83,7 @@ export async function loginUser(req, res) {
         {
             id: user.id,
             //role: user.role
+            iat: Math.floor(Date.now() / 1000)
         },
         process.env.JWT_SECRET,
         {
@@ -96,18 +99,43 @@ export async function loginUser(req, res) {
         }
     })
 }
-export async function updateProduct(req, res) {
-    const { id } = req.params;
-    const updatedProduct = await db.Product.update(req.body, {
-        where: { id }
-    });
-    if (updatedProduct[0] > 0) { 
-        return res.status(200).json({
-            message: 'Cập nhật sản phẩm thành công'
-        });
-    } else {
-        return res.status(404).json({
-            message: 'Sản phẩm không tìm thấy'
+export async function updateUser(req, res) {
+    const {id} = req.params;
+    const { name, avatar, old_password, new_password } = req.body;
+    if(req.user.id != id){
+        return res.status(403).json({
+            message: 'Khong co quyen cap nhat nguoi dung khac'
         });
     }
+
+    const user = await db.User.findByPk(id);
+    if(!user){
+        return res.status(404).json({
+            message: 'Khong tim thay nguoi dung'
+        });
+    }
+    
+    if(old_password && new_password){
+        const passwordValid = await argon2.verify(user.password, old_password);
+        if(!passwordValid){
+            return res.status(400).json({
+                message: 'Mat khau khong dung'
+            });
+        }
+
+        user.password = await argon2.hash(new_password);
+        user.password_change_at = new Date();
+    } else if(old_password || new_password){
+        return res.status(400).json({
+            message: 'Cần nhap mat khau cu va mat khau moi'
+        });
+    }
+    user.name = name || user.name;
+    user.avatar = avatar || user.avatar;
+    await user.save();
+    user.avatar = getAvatarUrl(user.avatar);
+    return res.status(200).json({
+        message: 'Cap nhat nguoi dung thanh cong',
+        data: user
+    });
 }
