@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize"
 import db from "../models"
 import { Op } from 'sequelize';
-
+import { getAvatarUrl } from "../helpers/imageHelper";
 
 export async function getBrands(req, res) {
     // Lấy tham số search và paging từ query
@@ -33,7 +33,10 @@ export async function getBrands(req, res) {
 
     return res.status(200).json({
         message: 'Lấy danh sách thương hiệu thành công',
-        data: brands, // Thay đổi data
+        data: brands.map (brand =>({
+            ...brand.get({plain: true}),
+            image: getAvatarUrl(brand.image)
+        })),
         currentPage: parseInt(page, 10),
         totalPages: Math.ceil(totalBrands / pageSize),
         totalBrands
@@ -59,7 +62,10 @@ export async function getBrandById(req, res) {
     }
     res.status(200).json({
         message: 'Lấy thông tin thương hiệu thành công',
-        data: brand
+        data: {
+            ...brand.get({plain: true}),
+            image: getAvatarUrl(brand.image)
+        }
     });
 }
 
@@ -68,7 +74,10 @@ export async function insertBrand(req, res) {
         if (brand) {
             return res.status(201).json({
                 message: 'Thêm mới thương hiệu thành công',
-                data: brand
+                data: {
+                    ...brand.get({plain: true}),
+                    image: getAvatarUrl(brand.image)
+                }
             });
         } else { 
             return res.status(500).json({

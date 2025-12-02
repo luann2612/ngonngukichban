@@ -4,6 +4,7 @@ import db from "../models"
 import fs from 'fs';
 import path from 'path';
 import { BannerStatus } from "../constants";
+import { getAvatarUrl } from "../helpers/imageHelper";
 export async function getBanners(req, res) {
     // Lấy tham số search và paging từ query
     const { search = '', page = 1 } = req.query;
@@ -34,10 +35,13 @@ export async function getBanners(req, res) {
     // Trả về response
     return res.status(200).json({
         message: 'Lấy danh sách banner thành công',
-        data: banners,
-        currentPage: parseInt(page, 10),
-        totalPages: Math.ceil(totalBanners / pageSize),
-        totalBanners
+        data: banners.map(banner =>({
+            ...banner.get({plain: true}),
+            image: getAvatarUrl(banner.image)
+        })),
+        current_page: parseInt(page, 10),
+        total_pages: Math.ceil(totalBanners / pageSize),
+        total : totalBanners
     });
 }
 
@@ -52,7 +56,10 @@ export async function getBannerById(req, res) {
     }
     res.status(200).json({
         message: 'Lấy thông tin banner thành công',
-        data: banner
+        data: {
+            ...banner.get({plain: true}),
+            image: getAvatarUrl(banner.image)
+        }
     });
 }
 
@@ -76,7 +83,10 @@ export async function insertBanner(req, res) {
 
     return res.status(201).json({
         message: 'Thêm mới banner thành công',
-        data: banner
+        data: {
+            ...banner.get({plain: true}),
+            image: getAvatarUrl(banner.image)
+        }
     });
 
 

@@ -25,9 +25,9 @@ export const getCartItems = async (req, res) => {
     return res.status(200).json({
         message: 'Lấy danh sách mục giỏ hàng thành công',
         data: cartItems,
-        currentPage: parseInt(page, 10),
-        totalPages: Math.ceil(totalCartItems / pageSize),
-        totalCartItems
+        current_page: parseInt(page, 10),
+        total_pages: Math.ceil(totalCartItems / pageSize),
+        total : totalCartItems
     })
 }
 

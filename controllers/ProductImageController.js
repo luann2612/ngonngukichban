@@ -49,7 +49,10 @@ export async function getProductImageById(req, res){
     }
     res.status(200).json({
         message: 'Lấy thông tin ảnh sản phẩm thành công',
-        data: productImage
+        data: productImage.map((productImage) => ({
+            ...productImage.get({ plain: true }),
+            img_url: getAvatarUrl(productImage.img_url)
+        }))
     });
 }
 
@@ -76,7 +79,10 @@ export async function insertProductImage(req, res) {
     const productImage = await db.ProductImage.create(req.body);
     return res.status(201).json({
         message: 'Thêm mới ảnh sản phẩm thành công',
-        data: productImage
+        data: {
+            ...productImage.get({ plain: true }),
+            img_url: getAvatarUrl(productImage.img_url)
+        }
     });
 }
 export async function deleteProductImage(req, res){

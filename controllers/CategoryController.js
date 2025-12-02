@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize"
 import { Op } from 'sequelize';
 import db from "../models"
+import { getAvatarUrl } from "../helpers/imageHelper";
 // export async function getCategories(req, res) {
 //     const categories = await db.Category.findAll()
 //     res.status(200).json({
@@ -42,10 +43,13 @@ export async function getCategories(req, res) {
     // Trả về response
     return res.status(200).json({
         message: 'Lấy danh sách danh mục thành công',
-        data: categories,
-        currentPage: parseInt(page, 10),
-        totalPages: Math.ceil(totalCategories / pageSize),
-        totalCategories // Thay đổi total
+        data: categories.map(category => ({
+            ...category.get({ plain: true }),
+            image: getAvatarUrl(category.image)
+        })),
+        current_page: parseInt(page, 10),
+        total_pages: Math.ceil(totalCategories / pageSize),
+        total: totalCategories // Thay đổi total
     });
 }
 export async function getCategoryById(req, res) {
@@ -59,7 +63,10 @@ export async function getCategoryById(req, res) {
     }
     res.status(200).json({
         message: 'Lấy thông tin danh mục thành công',
-        data: category
+        data: {
+            ...category.get({plain: true}),
+            image: getAvatarUrl(category.image)
+        }
     });
 }
 

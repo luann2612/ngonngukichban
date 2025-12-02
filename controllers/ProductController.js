@@ -32,10 +32,13 @@ export async function getProducts(req, res) {
     ])
     return res.status(200).json({
         message: 'Lấy danh sách sản phẩm thành công',
-        data: products,
-        currentPage: parseInt(page, 10),
-        totalPages: Math.ceil(totalProducts / pageSize),
-        totalProducts
+        data: products.map(product => ({
+            ...product.get({plain: true}),
+            avatar: getAvatarUrl(product.avatar)
+        })),
+        current_page: parseInt(page, 10),
+        total_pages: Math.ceil(totalProducts / pageSize),
+        total : totalProducts
     })
 
 }
@@ -56,7 +59,10 @@ export async function getProductById(req, res) {
 
     res.status(200).json({
         message: 'Lấy thông tin sản phẩm thành công',
-        data: product
+        data: {
+            ...product.get({plain: true}),
+            image: getAvatarUrl(product.image)
+        }
     })
 
 }

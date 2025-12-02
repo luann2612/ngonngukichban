@@ -133,9 +133,36 @@ export async function updateUser(req, res) {
     user.name = name || user.name;
     user.avatar = avatar || user.avatar;
     await user.save();
-    user.avatar = getAvatarUrl(user.avatar);
+    //user.avatar = getAvatarUrl(user.avatar);
     return res.status(200).json({
         message: 'Cap nhat nguoi dung thanh cong',
-        data: user
+        data: {
+            ...user.get({plain:true}),
+            avatar: getAvatarUrl(user.avatar)
+        }
+    });
+}
+
+export const getUserById = async (req, res) => {
+    const {id} = req.params;
+    if (req.user.id != id && req.user.role != UserRole.ADMIN) {
+        return res.status(403).json({
+            message: 'Khong co quyen cap nhat nguoi dung khac'
+        });
+    }
+    const user = await db.User.findByPk(id, {
+        attributes: { exclude: ['password'] }
+    });
+    if (!user) {
+        return res.status(404).json({
+            message: 'Khong tim thay nguoi dung'
+        });
+    }
+    return res.status(200).json({
+        message: 'Lay thong tin nguoi dung thanh cong',
+        data: {
+            ...user.get({plain:true}),
+            avatar: getAvatarUrl(user.avatar)
+        }
     });
 }

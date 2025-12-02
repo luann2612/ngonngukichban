@@ -57,7 +57,9 @@ export function AppRouter(app) {
     router.post('/users/:id', 
         requireRoles([UserRole.USER, UserRole.ADMIN]),
         asyncHandler(UserController.updateUser))
-
+    router.post('/users/me/:id',
+        requireRoles([UserRole.USER, UserRole.ADMIN]),
+        asyncHandler(UserController.getUserById))
 
     //http:localhost:3000/products
     //Product Router

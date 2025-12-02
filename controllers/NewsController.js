@@ -34,9 +34,9 @@ export async function getNews(req, res) {
     return res.status(200).json({
         message: 'Lấy danh sách tin tức thành công',
         data: newsList,
-        currentPage: parseInt(page, 10),
-        totalPages: Math.ceil(totalNews / pageSize),
-        totalNews // Tổng số lượng tin
+        current_page: parseInt(page, 10),
+        total_pages: Math.ceil(totalNews / pageSize),
+        total : totalNews // Tổng số lượng tin
     });
 }
 
